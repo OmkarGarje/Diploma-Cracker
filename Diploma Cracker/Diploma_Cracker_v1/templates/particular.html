@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC-Subject</title>
+  <link rel="stylesheet" href="{% static 'css/particular.css'%}">
+</head>
+
+<body>
+  <header>
+    <div class="logo"><span>D</span>iploma <span>C</span>racker</div>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+      <ul>
+        <li>
+          <a href="{% url 'home'%}">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'topper'%}">Topper Bot</a>
+        </li>
+        <li>
+          <a href="{% url 'coding'%}">Coding Subjects</a>
+        </li>
+        <li>
+          <a href="{% url 'theory'%}">Theory Subjects</a>
+        </li>
+        <li>
+          <a href="{% url 'timer'%}">Study timer</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+    hamburger = document.querySelector(".hamburger");
+    hamburger.onclick = function () {
+      navBar = document.querySelector(".nav-bar");
+      navBar.classList.toggle("active");
+    }
+  </script>
+
+
+  <h2>{{sub_name|upper}}</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Unit</th>
+        <th>Topic</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for unit in all_units_of_given_subject%}
+
+      <tr>
+        <td>Unit-{{forloop.counter}}</td>
+        <td><a href="../media/{{unit.unit_file}}">{{unit.unit_name}}</a></td>
+      </tr>
+
+      {% endfor %}
+
+
+
+
+
+      <!-- <tr>
+        <td>Unit-1</td>
+        <td><a href="Unit- 1 Basic Syntactical Constructs in Java final.pptx">Basics in Java</a></td>
+      </tr>
+      <tr>
+        <td>Unit-2</td>
+        <td><a href="Unit- 2 Derived Syntactical Constructs in Java.pptx">Constructors in Java</a></td>
+      </tr>
+      <tr>
+        <td>Unit-3</td>
+        <td><a href="Unit-3  Inheritance,Interface and Package1.pptx">Inheritance, Interface & packages</a></td>
+      </tr>
+      <tr>
+        <td>Unit-4</td>
+        <td><a href="Unit 4-Exception Handling.pptx">Exception Handling</a></td>
+      </tr>
+      <tr>
+        <td>Unit-5</td>
+        <td><a href="Unit-5 JAVA APPLETS & GRAPHICS PROGRAMMING(20 MARKS).pptx">Java Applet</a></td>
+      </tr>
+      <tr>
+        <td>Unit-6</td>
+        <td><a href="Unit-6 Managing Input output file in Java.pptx">I/O files in Java</a></td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <ol>
+    <li><a href="../media/{{imp_questions.question_file}}" download>IMP - QUESTIONS PDF</a></li>
+  </ol>
+
+
+</body>
+
+</html>
